@@ -1,4 +1,4 @@
-Using django implement CRUD application for user management.
+CRUD application for user management.
 User fields:
 - username (unique)
 - first_name
