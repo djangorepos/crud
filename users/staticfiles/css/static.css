@@ -1,0 +1,28 @@
+.blue_button {
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  float:right;
+}
+.container {
+  margin-left: 46px;
+  padding-top: 123px;
+  max-width: 1264px;
+}
+.row {
+  margin-top: 10px;
+}
+.col-4 {
+  float:left;
+  width: 40%;
+}
+.col-6 {
+  float:left;
+  width: 60%;
+}
