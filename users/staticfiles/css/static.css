@@ -1,3 +1,8 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+    font-family: Helvetica, serif;
+}
+
 .blue_button {
   background-color: blue;
   border: none;
@@ -13,10 +18,9 @@
 .container {
   margin-left: 46px;
   margin-right: 46px;
-  padding-top: 123px;
 }
 .row {
-  margin-top: 10px;
+ margin-top: 185px;
 }
 .col-1 {
   float:left;
@@ -25,6 +29,30 @@
 .col-2 {
   float:left;
   width: 33.33%;
+}
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+table {
+    border-collapse: collapse;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+
+.user_table {
+    border: solid #f7f7f9;
+    border-width: 0.2rem 0 0;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
 }
 .form {
     margin-left: 26px;
@@ -36,11 +64,9 @@ h4 {
     margin-inline-start: 0;
     margin-inline-end: 0;
     font-weight: bold;
-    font-family: Helvetica, serif;
     font-size: 16px;
 }
 .form-control {
-  font-family: Helvetica, serif;
   font-size: 13px;
 }
 
@@ -51,7 +77,14 @@ input[type=text], select {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+}
+input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 input[type=password], select {
@@ -61,7 +94,6 @@ input[type=password], select {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
 input[type=submit] {
@@ -77,4 +109,38 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+}
+
+.errorlist
+    {
+        color: red;
+    }
+
+.error input, .error select {
+border: 2px red solid;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    margin-top: 56px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    width: 281px;
+    height: 56px;
+
+}
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    float:right;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    float:left;
 }
