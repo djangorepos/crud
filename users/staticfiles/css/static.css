@@ -12,17 +12,69 @@
 }
 .container {
   margin-left: 46px;
+  margin-right: 46px;
   padding-top: 123px;
-  max-width: 1264px;
 }
 .row {
   margin-top: 10px;
 }
-.col-4 {
+.col-1 {
   float:left;
-  width: 40%;
+  width: 66.66%;
 }
-.col-6 {
+.col-2 {
   float:left;
-  width: 60%;
+  width: 33.33%;
+}
+.form {
+    margin-left: 26px;
+}
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+    font-family: Helvetica, serif;
+    font-size: 16px;
+}
+.form-control {
+  font-family: Helvetica, serif;
+  font-size: 13px;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
 }

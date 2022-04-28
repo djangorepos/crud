@@ -24,7 +24,7 @@ class UpdatedUserManager(UserManager):
 
 
 class User(AbstractUser):
-    user_type = models.CharField(max_length=128, choices=[("Admin", "Admin"), ("Driver", "Driver")])
+    type = models.CharField(max_length=128, choices=[("Admin", "Admin"), ("Driver", "Driver")])
     objects = UpdatedUserManager()
 
     EMAIL_FIELD = "email"
