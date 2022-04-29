@@ -5,11 +5,12 @@
 <div class="container">
         <div class="alert alert-{% if success %}success{% else %}danger{% endif %}">
         {{ message }}
-        {% endfor %}
+{% endfor %}
         </div><br>
         <div class="row">
             <div class="col-1">
-                <button class="blue_button" type="button">Create User</button>
+                 <button class="blue_button" type="button">Create User</button>
+                <br>
                 <div class="user-table">
                     <table class="table table-striped">
                       <thead>
@@ -39,53 +40,39 @@
                  <form class="form" method="post">
                     <h4>Create new user</h4>
                     {% csrf_token %}
-                     <div>
                         <label class="form-control">Username*: </label>
-                        <div>
                             {{ form.username }}
-                            {{ form.username.errors }}
-                        </div>
-                    </div>
-                    <div>
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback">{{ form.username.errors }}</div>
+                            {% endif %}
                         <label class="form-control">First Name*: </label>
                             {{ form.first_name }}
                             {% if form.first_name.errors %}
                             <div class="invalid-feedback">{{ form.first_name.errors }}</div>
                             {% endif %}
-                    </div>
-                    <div class="form-control">
-                        <label>Last Name*: </label>
+                        <label class="form-control" >Last Name*: </label>
                             {{ form.last_name }}
                             {% if form.last_name.errors %}
                             <div class="invalid-feedback">{{ form.last_name.errors }}</div>
                             {% endif %}
-                    </div>
-                    <div class="form-control">
-                        <label>Email*: </label>
+                        <label class="form-control" >Email*: </label>
                             {{ form.email }}
                             {% if form.email.errors %}
                             <div class="invalid-feedback">{{ form.email.errors }}</div>
                             {% endif %}
-                    </div>
-                    <div class="form-control">
-                        <label>Type*: </label>
+                        <label class="form-control" >Type*: </label>
                            {{ form.type }}
                            {{ form.type.errors }}
-                    </div>
-                    <div class="form-control">
-                        <label>Password*: </label>
+                        <label class="form-control" >Password*: </label>
                         {{ form.password1 }}
                         {% if form.password1.errors %}
                         <div class="invalid-feedback">{{ form.password1.errors }}</div>
                         {% endif %}
-                    </div>
-                    <div class="form-control">
-                        <label>Repeat Password*: </label>
+                        <label class="form-control">Repeat Password*: </label>
                             {{ form.password2 }}
                             {% if form.password2.errors %}
                             <div class="invalid-feedback">{{ form.password2.errors }}</div>
                             {% endif %}
-                    </div>
                     <button class="blue_button" type="submit">Create</button>
                 </form>
             </div>
