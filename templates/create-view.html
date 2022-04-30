@@ -30,8 +30,9 @@
                             {% endif %}
                         <label class="form-control" >Email*: </label>
                         <div class="{% if form.email.errors %}error{% endif %}">
-                            {{ form.email }}
-                        </div>
+                            <div class="svg-input">
+                                {{ form.email }}
+                            </div>
                             {% if form.email.errors %}
                             <div class="invalid-feedback">{{ form.email.errors }}</div>
                             {% endif %}

@@ -30,7 +30,7 @@
                             {% endif %}
                         <label class="form-control" >Email*: </label>
                         <div class="{% if form.email.errors %}error{% endif %}">
-                            {{ form.email }}
+                            <input class="form-control email-icon" type="email" name="email" value="driver@mail.com" maxlength="254" required="required" id="id_email">
                         </div>
                             {% if form.email.errors %}
                             <div class="invalid-feedback">{{ form.email.errors }}</div>

@@ -1,12 +1,12 @@
 *, ::after, ::before {
     box-sizing: border-box;
-    font-family: Helvetica, serif;
+    font-family: Helvetica, Regular, serif;
 }
 .close {
     float:right;
 }
 .blue_button {
-  background-color: blue;
+  background-color: #2e8ff0;
   border: none;
   border-radius: 5px;
   color: white;
@@ -20,7 +20,7 @@
 }
 
 .red_button {
-  background-color: mediumvioletred;
+  background-color: #f44682;
   border: none;
   border-radius: 5px;
   color: white;
@@ -36,6 +36,7 @@
 .container {
   margin-left: 46px;
   margin-right: 46px;
+
 }
 .row {
  margin-top: 185px;
@@ -49,7 +50,8 @@
   width: 33.33%;
 }
 .table td, .table th {
-    padding: 0.75rem;
+    padding-top: 21px;
+    padding-bottom: 22px;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 }
@@ -61,7 +63,8 @@ table {
     border-collapse: collapse;
     text-indent: initial;
     border-spacing: 2px;
-    width:100%
+    width:100%;
+
 }
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0,0,0,.05);
@@ -69,6 +72,7 @@ table {
 
 .user-table {
     border-width: 0.2rem 0 0;
+
 }
 
 td {
@@ -86,9 +90,11 @@ h4 {
     margin-inline-end: 0;
     font-weight: bold;
     font-size: 16px;
+    font-family: Helvetica, Bold, sans-serif;
 }
 .form-control {
   font-size: 13px;
+
 }
 
 
@@ -134,4 +140,10 @@ background-color: #ffdddd;
     background-color: #f44682;
     border-color: #f5c6cb;
     float:left;
+}
+
+.email-icon {
+    height: 24px;
+    background: transparent url('img/alternate_email_black_24dp.svg') 0 0 no-repeat padding-box;
+    opacity: 1
 }
