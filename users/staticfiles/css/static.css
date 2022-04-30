@@ -2,7 +2,9 @@
     box-sizing: border-box;
     font-family: Helvetica, serif;
 }
-
+.close {
+    float:right;
+}
 .blue_button {
   background-color: blue;
   border: none;
@@ -16,6 +18,21 @@
   font-size: 14px;
   float:right;
 }
+
+.red_button {
+  background-color: mediumvioletred;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 16px 32px;
+  margin:  10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  float:left;
+}
+
 .container {
   margin-left: 46px;
   margin-right: 46px;
@@ -36,6 +53,9 @@
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 }
+.table td:hover {
+    cursor:pointer;
+}
 
 table {
     border-collapse: collapse;
@@ -48,7 +68,6 @@ table {
 }
 
 .user-table {
-    border: solid #f7f7f9;
     border-width: 0.2rem 0 0;
 }
 
@@ -82,11 +101,6 @@ input, select {
   border-radius: 4px;
 }
 
-input:invalid {
-  border-color: #800000;
-  background-color: #ffdddd;
-}
-
 .errorlist
     {
         color: red;
@@ -94,6 +108,7 @@ input:invalid {
 
 .error input, .error select {
 border: 2px red solid;
+background-color: #ffdddd;
 }
 
 .alert {

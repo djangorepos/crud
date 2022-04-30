@@ -8,6 +8,43 @@
         <title>CRUD application for user management</title>
     </head>
     <body>
-    {% block listview %}{% endblock %}
+        {% for message in messages %}
+    <div class="container">
+        <div class="alert alert-{% if error %}danger{% else %}success{% endif %}">
+        {{ message }}
+        {% endfor %}
+        </div>
+            <br>
+        <div class="row">
+            <div class="col-1">
+                <button class="blue_button" type="button" onclick="location.href = '{% url 'create_view' %}'">Create User</button>
+                <div class="user-table">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                            <th scope="col">USERNAME</th>
+                            <th scope="col">FIRST NAME</th>
+                            <th scope="col">LAST NAME</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">TYPE</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for user in users %}
+                        <tr onclick="location.href = '{% url 'edit_view' user.id %}'">
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.last_name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.type}}</td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                    </div>
+            </div>
+    {% block view %}{% endblock %}
+        </div>
+    </div>
     </body>
 </html>

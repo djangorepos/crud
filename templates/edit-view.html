@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block view %}
+            <div class="col-2">
+                 <form class="form" method="post">
+                    <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                    <img class="close" src="{% static 'img\close-24px.svg'%}"
+                         onclick="location.href = '{% url 'list_view'%}'">
+                    {% csrf_token %}
+                        <label class="form-control">Username*: </label>
+                        <div class="{% if form.username.errors %}error{% endif %}">
+                            {{ form.username }}
+                        </div>
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback">{{ form.username.errors }}</div>
+                            {% endif %}
+                        <label class="form-control">First Name*: </label>
+                        <div class="{% if form.first_name.errors %}error{% endif %}">
+                            {{ form.first_name }}
+                        </div>
+                            {% if form.first_name.errors %}
+                        <div class="invalid-feedback">{{ form.first_name.errors }}</div>
+                            {% endif %}
+                        <label class="form-control" >Last Name*: </label>
+                         <div class="{% if form.last_name.errors %}error{% endif %}">
+                            {{ form.last_name }}
+                         </div>
+                            {% if form.last_name.errors %}
+                            <div class="invalid-feedback">{{ form.last_name.errors }}</div>
+                            {% endif %}
+                        <label class="form-control" >Email*: </label>
+                        <div class="{% if form.email.errors %}error{% endif %}">
+                            {{ form.email }}
+                        </div>
+                            {% if form.email.errors %}
+                            <div class="invalid-feedback">{{ form.email.errors }}</div>
+                            {% endif %}
+                        <label class="form-control" >Type*: </label>
+                        <div class="{% if form.type.errors %}error{% endif %}">
+                           {{ form.type }}
+                        </div>
+                        {% if form.type.errors %}
+                        <div class="invalid-feedback">{{ form.type.errors }}</div>
+                        {% endif %}
+                        <label class="form-control" >Password*: </label>
+                        <div class="{% if form.password2.errors %}error{% endif %}">
+                            {{ form.password1 }}
+                        </div>
+                        {% if form.password1.errors %}
+                        <div class="invalid-feedback">{{ form.password1.errors }}</div>
+                        {% endif %}
+                        <label class="form-control">Repeat Password*: </label>
+                        <div class="{% if form.password2.errors %}error{% endif %}">
+                            {{ form.password2 }}
+                        </div>
+                            {% if form.password2.errors %}
+                        <div class="invalid-feedback">{{ form.password2.errors }}</div>
+                            {% endif %}
+                    <button class="red_button" type="button" onclick="location.href = '{% url 'delete_view' user.id %}'">Delete</button>
+                    <button class="blue_button" type="submit">Save</button>
+                </form>
+            </div>
+{% endblock %}
