@@ -1,4 +1,7 @@
-CRUD application for user management.
+CRUD application for user management. Running on server AWS EC2, ip 54.167.96.246
+Documentation on swagger:
+http://54.167.96.246/swagger/
+
 User fields:
 - username (unique)
 - first_name
@@ -9,6 +12,7 @@ User fields:
 
 Deployment:
 - docker-compose up --build
-- docker exec -it web python manage.py collectstatic --noinput
-- docker exec -it web python manage.py migrate
+- docker exec -it  test_repo_1_web_1 python manage.py collectstatic --noinput
+- docker exec -it  test_repo_1_web_1 python manage.py migrate
 - docker-compose up
+
