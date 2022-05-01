@@ -51,6 +51,7 @@ class UserDeleteSerializer(ModelSerializer):
 
     @staticmethod
     def delete(request, pk):
+        print(request)
         return User.objects.get(id=pk)
 
     class Meta:
