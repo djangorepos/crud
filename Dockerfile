@@ -10,7 +10,5 @@ ADD requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 ADD . /code/
-RUN python manage.py makemigrations
-RUN python manage.py migrate
-RUN python manage.py collectstatic
+ENTRYPOINT ["docker-entrypoint.sh"]
 ENV TZ=Europe/Kiev
