@@ -10,5 +10,5 @@ ADD requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 ADD . /code/
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/code/docker-entrypoint.sh"]
 ENV TZ=Europe/Kiev
