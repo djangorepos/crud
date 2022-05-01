@@ -119,31 +119,31 @@ background-color: #ffdddd;
 
 .alert {
     position: relative;
-    padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     margin-top: 56px;
     border: 1px solid transparent;
     border-radius: 5px;
     width: 281px;
     height: 56px;
-    color: #EFF0F4;
-
+    color: #ffffff;
+    padding: 21px 0 22px 26px;
+    font-size: 13px;
 }
 .alert-success {
     background-color: #66BB6A;
     border-color: #c3e6cb;
-    color: #155724;
     float:right;
 }
 
 .alert-danger {
     background-color: #f44682;
     border-color: #f5c6cb;
+    color: #ffffff;
     float:left;
 }
 
 .email-icon {
-    height: 24px;
     background: transparent url('img/alternate_email_black_24dp.svg') 0 0 no-repeat padding-box;
+    height: 24px;
     opacity: 1
 }

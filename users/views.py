@@ -6,7 +6,7 @@ from rest_framework.mixins import DestroyModelMixin
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from users.forms import UserForm
+from users.forms import UserCreateForm, UserUpdateForm
 from users.serializers import *
 
 
@@ -16,28 +16,20 @@ def list_view(request):
 
 def create_view(request):
     context = {}
-    form = UserForm()
+    form = UserCreateForm()
     context['users'] = User.objects.all()
     context['form'] = form
 
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = UserCreateForm(request.POST)
         context['form'] = form
+
         if form.is_valid():
-            user = form.instance
-            user.set_password(form.cleaned_data["password1"])
-            if user.type == 'Admin':
-                user.is_superuser = True
-                user.is_staff = True
-            else:
-                user.is_staff = True
-            user.save()
+            form.save()
             messages.success(request, "User registered.")
         else:
             context['error'] = True
             messages.error(request, "Error, something is wrong")
-
-            return render(request, 'create-view.html', context)
 
     return render(request, 'create-view.html', context)
 
@@ -45,36 +37,21 @@ def create_view(request):
 def update_view(request, pk):
     context = {}
     user = User.objects.get(id=pk)
-    form = UserForm(instance=user)
+    form = UserUpdateForm(instance=user)
     context['form'] = form
     context['users'] = User.objects.all()
     context['user'] = user
 
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = UserUpdateForm(request.POST)
         context['form'] = form
+
         if form.is_valid():
-            if user.username != form.instance.username:
-                user.username = form.instance.username
-            user.first_name = form.instance.first_name
-            user.last_name = form.instance.last_name
-            user.email = form.instance.email
-            user.type = form.instance.type
-            user.set_password(form.cleaned_data["password1"])
-
-            if user.type == 'Admin':
-                user.is_superuser = True
-                user.is_staff = True
-            else:
-                user.is_superuser = False
-                user.is_staff = True
-
             user.save()
             messages.success(request, "User updated.")
         else:
             context['error'] = True
             messages.error(request, "Error, something is wrong")
-            return render(request, 'update-view.html', context)
 
     return render(request, 'update-view.html', context)
 

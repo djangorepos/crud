@@ -1,12 +1,26 @@
 from django.contrib.auth.forms import UserCreationForm
 
+
 from .models import User
 
 
-class UserForm(UserCreationForm):
+class UserCreateForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
-        super(UserForm, self).__init__(*args, **kwargs)
+        super(UserCreateForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['required'] = 'required'
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'type',)
+
+
+class UserUpdateForm(UserCreationForm):
+
+    def __init__(self, *args, **kwargs):
+        super(UserUpdateForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
             field.widget.attrs['required'] = 'required'
@@ -22,4 +36,4 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'type', )
+        fields = ('username', 'first_name', 'last_name', 'email', 'type',)
