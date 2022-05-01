@@ -45,6 +45,6 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('create-api/', UserCreateAPIView.as_view(), name='create_api'),
                   path('update-api/', UserUpdateAPIView.as_view(), name='update_api'),
-                  path('delete-api/', UserDeleteAPIView.as_view(), name='delete_api'),
+                  path('delete-api/<pk>', UserDeleteAPIView.as_view(), name='delete_api'),
                   path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

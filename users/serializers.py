@@ -29,11 +29,18 @@ class UserUpdateSerializer(ModelSerializer):
         write_only=True,
     )
 
-    def update(self, request, *args, **kwargs):
-        serializer = self.serializer_class(request.user, data=request.data, partial=True)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    def update(self, instance, validated_data):
+        password = validated_data.pop('password', None)
+
+        for (key, value) in validated_data.items():
+            setattr(instance, key, value)
+
+        if password is not None:
+            instance.set_password(password)
+
+        instance.save()
+
+        return instance
 
     class Meta:
         model = User
@@ -41,7 +48,10 @@ class UserUpdateSerializer(ModelSerializer):
 
 
 class UserDeleteSerializer(ModelSerializer):
-    id = IntegerField(min_value=1)
+
+    @staticmethod
+    def delete(request, pk):
+        return User.objects.get(id=pk)
 
     class Meta:
         model = User

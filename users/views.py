@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from rest_framework import status
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, RetrieveUpdateAPIView
+from rest_framework.mixins import DestroyModelMixin
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
@@ -98,19 +98,27 @@ class UserCreateAPIView(GenericAPIView):
         All fields are required.
         """
         serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(status=status.HTTP_201_CREATED)
 
 
-class UserUpdateAPIView(GenericAPIView):
+class UserUpdateAPIView(RetrieveUpdateAPIView):
     """
     Updates user.
     """
     permission_classes = [AllowAny]
     serializer_class = UserUpdateSerializer
 
-    def post(self, request):
+    def get(self, request, *args, **kwargs):
+        return Response({"detail": "Method \"GET\" not allowed."},
+                        status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    def retrieve(self, request, *args, **kwargs):
+        serializer = self.serializer_class(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def update(self, request, *args, **kwargs):
         """
         Updates User object.
         All fields are required.
@@ -122,17 +130,14 @@ class UserUpdateAPIView(GenericAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class UserDeleteAPIView(GenericAPIView):
+class UserDeleteAPIView(GenericAPIView, DestroyModelMixin):
     """
     Deletes user.
     """
     permission_classes = [AllowAny]
     serializer_class = UserDeleteSerializer
 
-    def post(self, request):
-        """
-        Updates User object.
-        All fields are required.
-        """
-        User.objects.get(id=request.data['id']).delete()
-        return Response(status=status.HTTP_200_OK)
+    def delete(self, request, pk):
+        instance = self.serializer_class.delete(request, pk)
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
