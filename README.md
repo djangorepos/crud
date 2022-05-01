@@ -7,6 +7,7 @@ User fields:
 - password (min length 8. at least one number and one letter )
 - type ("Admin", "Driver')
 
+- Ubuntu server, root user:
 docker-compose build
 docker run -it web python manage.py makemigrations
 docker run -it web python manage.py migrate
