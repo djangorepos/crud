@@ -10,9 +10,9 @@ services:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     depends_on:
-      - localhost
+      - db
 
-  localhost:
+  db:
     image: postgres:latest
     volumes:
       - ./data/db:/var/lib/postgresql/data
