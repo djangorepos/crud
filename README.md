@@ -7,5 +7,7 @@ User fields:
 - password (min length 8. at least one number and one letter )
 - type ("Admin", "Driver')
 
-
-sudo docker-compose up
+Deployment:
+- docker-compose up --build
+- docker exec -it web python manage.py collectstatic --noinput
+- docker exec -it web python manage.py migrate
