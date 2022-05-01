@@ -2,7 +2,10 @@ version: '3'
 services:
   web:
     build: .
-    command: gunicorn swipe.wsgi:application --bind 0.0.0.0:8000
+    command: python manage.py makemigrations &&
+    python manage.py migrate && 
+    python manage.py collectstatic && 
+    gunicorn swipe.wsgi:application --bind 0.0.0.0:8000
     expose:
       - "8000"
     volumes:
