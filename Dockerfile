@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3
+FROM python:3.10.4
 RUN mkdir /code
 WORKDIR /code
 # set environment variables
