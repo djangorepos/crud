@@ -9,5 +9,8 @@ ENV PYTHONUNBUFFERED 1
 ADD requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+RUN python manage.py collectstatic
 ADD . /code/
 ENV TZ=Europe/Kiev

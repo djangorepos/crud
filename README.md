@@ -9,8 +9,6 @@ User fields:
 
 - Ubuntu server, root user:
 docker-compose build
-docker run -it web python manage.py makemigrations
-docker run -it web python manage.py migrate
-docker run -it web python manage.py collectstatic
-docker run -it web python manage.py createsuperuser(if you need django-admin)
+
+docker-compose run -it web python manage.py createsuperuser(if you need django-admin)
 docker-compose up
