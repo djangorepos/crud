@@ -11,3 +11,4 @@ Deployment:
 - docker-compose up --build
 - docker exec -it web python manage.py collectstatic --noinput
 - docker exec -it web python manage.py migrate
+- docker-compose up
