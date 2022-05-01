@@ -31,7 +31,7 @@
                       </thead>
                       <tbody>
                       {% for user in users %}
-                        <tr onclick="location.href = '{% url 'edit_view' user.id %}'">
+                        <tr onclick="location.href = '{% url 'update_view' user.id %}'">
                             <td>{{ user.username }}</td>
                             <td>{{ user.first_name }}</td>
                             <td>{{ user.last_name }}</td>
