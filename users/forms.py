@@ -1,6 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
 
-
 from .models import User
 
 
@@ -33,6 +32,7 @@ class UserUpdateForm(UserCreationForm):
         else:
             self._validate_unique = True
         return self.cleaned_data
+
 
     class Meta:
         model = User

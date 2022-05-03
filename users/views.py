@@ -17,8 +17,6 @@ def list_view(request):
 def create_view(request):
     context = {}
     form = UserCreateForm()
-    context['users'] = User.objects.all()
-    context['form'] = form
 
     if request.method == 'POST':
         form = UserCreateForm(request.POST)
@@ -31,6 +29,8 @@ def create_view(request):
             context['error'] = True
             messages.error(request, "Error, something is wrong")
 
+    context['users'] = User.objects.all()
+    context['form'] = form
     return render(request, 'create-view.html', context)
 
 
@@ -38,21 +38,28 @@ def update_view(request, pk):
     context = {}
     user = User.objects.get(id=pk)
     form = UserUpdateForm(instance=user)
-    context['form'] = form
-    context['users'] = User.objects.all()
-    context['user'] = user
 
     if request.method == 'POST':
         form = UserUpdateForm(request.POST)
         context['form'] = form
 
         if form.is_valid():
+            if form.cleaned_data["username"] != user.username:
+                user.username = form.cleaned_data["username"]
+            user.first_name = form.cleaned_data["first_name"]
+            user.last_name = form.cleaned_data["last_name"]
+            user.email = form.cleaned_data["email"]
+            user.type = form.cleaned_data["type"]
+            user.set_password(form.cleaned_data["password1"])
             user.save()
             messages.success(request, "User updated.")
         else:
             context['error'] = True
             messages.error(request, "Error, something is wrong")
 
+    context['form'] = form
+    context['users'] = User.objects.all()
+    context['user'] = user
     return render(request, 'update-view.html', context)
 
 
