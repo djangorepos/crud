@@ -11,7 +11,9 @@ User fields:
 - type ("Admin", "Driver')
 
 Deployment:
-- docker-compose up --build
+- git clone https://github.com/djangorepos/test_repo_1.git
+- cd test_repo_1
+- sudo docker-compose up --build
 - docker exec -it  test_repo_1_web_1 python manage.py collectstatic --noinput
 - docker exec -it  test_repo_1_web_1 python manage.py migrate
 - docker-compose up
