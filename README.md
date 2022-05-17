@@ -1,6 +1,5 @@
-CRUD application for user management. Running on server AWS EC2, ip 54.167.96.246
-Documentation on swagger:
-http://54.167.96.246/swagger/
+CRUD application for user management. 
+
 
 User fields:
 - username (unique)
