@@ -1,4 +1,5 @@
-version: '3'
+version: '3.8'
+
 services:
   web:
     build: .
@@ -11,16 +12,27 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     depends_on:
       - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_NAME=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=admin
+      - TZ=Europe/Kiev
+    ports:
+      - "8000:8000"
 
   db:
     image: postgres:latest
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
       - TZ=Europe/Kiev
+    ports:
+      - "5432:5432"
+    command: ["docker-entrypoint.sh", "postgres"]
 
   nginx:
     build: ./nginx
@@ -30,3 +42,6 @@ services:
       - "80:80"
     depends_on:
       - web
+
+volumes:
+  db-data:

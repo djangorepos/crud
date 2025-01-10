@@ -2,8 +2,12 @@
 /shelf/
 /workspace.xml
 .idea/
+.idea
+/.idea
 .docker.env
 __pycache__/
 media/
 **/venv/
+**/.venv/
 /.pytest_cache/
+/static

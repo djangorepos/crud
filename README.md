@@ -12,8 +12,9 @@ User fields:
 Deployment:
 - git clone https://github.com/djangorepos/test_repo_1.git
 - cd test_repo_1
-- sudo docker-compose up --build
-- docker exec -it  test_repo_1_web_1 python manage.py collectstatic --noinput
-- docker exec -it  test_repo_1_web_1 python manage.py migrate
+- docker-compose up --build -d
+- docker ps
+- docker exec -it  <your container web> python manage.py collectstatic --noinput
+- docker exec -it  <your container web> python manage.py migrate
 - docker-compose up
 
