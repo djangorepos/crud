@@ -10,8 +10,8 @@ User fields:
 - type ("Admin", "Driver')
 
 Deployment:
-- git clone https://github.com/djangorepos/test_repo_1.git
-- cd test_repo_1
+- git clone https://github.com/djangorepos/crud.git
+- cd crud
 - docker-compose up --build -d
 - docker ps
 - docker exec -it  <your container web> python manage.py collectstatic --noinput
