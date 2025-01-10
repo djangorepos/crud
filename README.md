@@ -14,7 +14,7 @@ Deployment:
 - cd crud
 - docker-compose up --build -d
 - docker ps
-- docker exec -it  <your container web> python manage.py collectstatic --noinput
-- docker exec -it  <your container web> python manage.py migrate
+- docker exec -it  </your container web/> python manage.py collectstatic --noinput
+- docker exec -it  </your container web/> python manage.py migrate
 - docker-compose up
 
